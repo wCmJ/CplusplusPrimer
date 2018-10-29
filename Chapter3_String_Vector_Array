@@ -1,0 +1,17 @@
+1. using
+    the declaration of using should not be included in header files.
+    the content of header files will be copyed to all files that contain it.
+    this will conflict with some names defined.
+    
+2. string
+    define in std
+    #include<string>
+    using std::string
+    2.1 copy initialization and direct initialization
+        std::cin>>string  from non-space to the last non-space
+        getline(std::cin,string)    get all line until \n. \n will be included to cin, but will be discarded when assign to string.
+        
+        
+        
+        
+        
