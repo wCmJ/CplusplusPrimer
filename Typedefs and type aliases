@@ -1,0 +1,57 @@
+typedefs allow the programmer to create an alias for a data type. and use the aliased name instead of the actual type name.
+typedef double distance_t;
+in C++11, using distance_t = double;
+#include<cstdlib>//for std::srand() std::rand()
+#include<time>//for std::time()
+std::srand(static_cast<unsigned int>(std::time(nullptr)));
+std::rand();
+
+
+char source[] = "Copy this!";
+char dest[5]; // note that the length of dest is only 5 chars!
+strcpy(dest, source); //will cover address behind dest. 
+strcpy_s(dest,len,source)// if len < sizeof(source) will get an error
+
+strlen() prints the number of characters before the null terninator.
+sizeof() returns the size of the entire array, regardless of what's in it.
+
+strcat() appends one string to another
+strncat() appends one string to another(with buffer length check)
+strcmp() compare two strings(return 0 if equal)
+strncmp() compare two strings up to a specific number of characters(return 0 if equal)
+
+
+
+
+char, unsigned char, short --->int
+unsigned short can be promoted to int or unsigned int, depending on the size of an int
+float ---> double
+enum ---> int
+
+Standard conversions include:
+numeric type  --->    any other numeric type, including unsigned(int to float)
+Enum          --->    the formal type of a numeric type(enum to float)
+zero          --->    a pointer type and numeric type
+pointer       --->    a void pointer
+
+default parameters won't work for functions called through function pointers.
+default parameters are resolved at compile-time
+function pointers are resolved at run-time.
+have to pass in values for any defaulted parameters explicitly.
+
+typedef bool (*validateFcn)(int,int);
+using validateFcn = bool(*)(int,int);
+bool validate(int x,int y,validateFcn pfcn);
+
+in C++11:
+#include<functional>
+bool validate(int x,int y,std::function<bool(int,int)> fcn);
+
+
+
+
+
+
+
+
+
