@@ -46,10 +46,24 @@ default parameters can only be used once.
 const keyword must be used on both the function prototype in the class definition and on the function definition.
 
 static members are created when the program starts, and destroyed when the program ends.
+const members can be initialized inside the class definition.
 
 
+. :: ?:
 
+class Cents
+{
+    friend Cents operator+(const Cents &c1,int value);
+    friend Cents operator+(int value,const Cents &c1);
+};
+operator<< and operator+ only has two parameters.    
+    
+std::ostream& operator<<()
+{
 
+}
+    
+    
     
     
     
