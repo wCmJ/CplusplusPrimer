@@ -19,6 +19,17 @@ pure virtual function with two main consequences:
     
 when providing a body for a pure virtual function, the body must be provided separately(not inline). the function is also a pure virtual function.
 
-    
-    
-    
+an interface class is a class that has no member variables, and where all of the functions are pure virtual.
+
+class 1;
+class 2:virtual public 1
+class 3:virtual public 1
+class 4:public 2,public 3
+virtual base class:
+    1.virtual base class are always created before non-virtual base classes
+    2.class 2 and class 3 constructors still have calls to the class 1 constructor.
+      when creating an instance of class 4, these constructor calls are simply ignored because class 4 is responsible for creating the class 1,
+      not class 2 and class 3. However, if we were to create an instance of class 2 or class 3, those constructor calls would be used, and normal inheritance rules apply.
+    3.the most derived class is responsible for constructing the virtual base class.
+    4.a virtual base class is always considered a direct base of its most derived class, but classes inheriting the virtual base still need access to it.
+      so in order to facilitate this, the compiler creates a virtual table for each class directly inheriting the virtual class.
