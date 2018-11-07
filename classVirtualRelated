@@ -1,0 +1,24 @@
+virtual table/vtable/virtual function table/virtual method table/dispatch table
+
+the virtual table is a lookup table of functions used to resolve function calls in a dynamic/late binding manner.
+
+a virtual table(a static array that the compiler sets up at compile time):
+    entry1: for virtual function1 that can be called by objects of the class / a function pointer that points to the most-derived function
+    entry2: for virtual function2 that can be called by objects of the class /
+    ...
+    entryn: for virtual functionn that can be called by objects of the class /
+
+*__vptr : is set when a class instance is created so that it points to the virtual table for that class.
+    
+pure virtual function(or abstract function):
+    acts as a placeholder that is meant to be redefined by derived class.
+    
+pure virtual function with two main consequences:
+    any class with one or more pure virtual function becomes an abstract base class, which means that it can not be instantiated
+    any derived class must define a body for this function, or that derived class will be considered an abstract base class as well.
+    
+when providing a body for a pure virtual function, the body must be provided separately(not inline). the function is also a pure virtual function.
+
+    
+    
+    
