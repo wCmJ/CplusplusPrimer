@@ -62,10 +62,50 @@ std::ostream& operator<<()
 {
 
 }
+
+
+
+class Base
+{
+public:
+	// This version of getThis() returns a pointer to a Base class
+	virtual Base* getThis() { std::cout << "called Base::getThis()\n"; std::cout << this << std::endl; return this; }
+	void printType() { std::cout << this << std::endl;  std::cout << "returned a Base\n"; }
+};
+
+class Derived : public Base
+{
+public:
+	// Normally override functions have to return objects of the same type as the base function
+	// However, because Derived is derived from Base, it's okay to return Derived* instead of Base*
+	virtual Derived* getThis() { std::cout << "called Derived::getThis()\n"; std::cout << this << std::endl;  return this; }
+	void printType() { std::cout << this << std::endl;  std::cout << "returned a Derived\n"; }
+};    
+Derived d;
+Base *ba = &d;
+d.getThis()->printType(); // calls Derived::getThis(), returns a Derived*, calls Derived::printType
+ba->getThis()->printType();  
+
+output:    
+    called Derived::getThis()
+    000000B2EBCFE528
+    000000B2EBCFE528
+    returned a Derived
+    called Derived::getThis()
+    000000B2EBCFE528
+    000000B2EBCFE528
+    returned a Base
     
+early binding: static binding / direct function call
+    means the compiler is able to directly associate the identifier name with a machine address.
     
-    
-    
-    
-    
-    
+late binding: dynamic binding / indirect function call   
+    it is not possible to know which function will be called until runtime.
+    In c++, one way to get late binding is to use funciton pointers.
+
+
+
+
+
+
+
