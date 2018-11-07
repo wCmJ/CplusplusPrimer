@@ -1,0 +1,17 @@
+Shallow:
+    B = A
+    B and A will point to same memory
+    
+Deep:
+    B = A
+    memory in A will be copyed to memory in B.
+
+operator= is default shallow copy.
+
+    
+    
+    
+    
+    
+    
+    
