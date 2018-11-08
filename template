@@ -1,0 +1,37 @@
+how template functions are implemented:
+    c++ does not compile the template function directly,
+    Instead, at compile time, when the compiler encounters a call to a template function,
+    it replicates the template function and replaces the template type parameters with actual types.
+    
+    1. replicates the function template
+    2. create the template instance
+    3. a normal function that can be compiled into machine language.
+    
+in order for the compiler to use a template, it must see both the template definition(not just a declaration) and the template type used to instantiate the template.
+cause header file and cpp file are compiled separately, we can not put definition and implementation in different files.
+    method 1: put all of your template class code in the header file
+    method 2: rename .cpp to .inl, and then include .inl from the bottom of the .h header. be careful the multiple include.
+
+template-non-type-parameters:
+definition:
+    template<typename T, int size>
+    class Array{
+    };
+implementation:
+    Array<int, 12> intArray;
+
+template-specialization:
+template<typename T>
+class tc {
+private:
+	T m_t;
+public:
+	tc(T t) {
+		m_t = t;
+	}
+};
+template<>
+tc<int>::tc(int t) {
+	m_t = 2 * t;
+}
+    
