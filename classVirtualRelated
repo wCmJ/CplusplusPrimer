@@ -33,3 +33,17 @@ virtual base class:
     3.the most derived class is responsible for constructing the virtual base class.
     4.a virtual base class is always considered a direct base of its most derived class, but classes inheriting the virtual base still need access to it.
       so in order to facilitate this, the compiler creates a virtual table for each class directly inheriting the virtual class.
+
+dynamic_cast:
+    convert base* to derive*
+    base must has a  polymorphic type
+
+
+
+
+
+
+
+
+
+
