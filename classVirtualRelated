@@ -2,6 +2,15 @@ virtual table/vtable/virtual function table/virtual method table/dispatch table
 
 the virtual table is a lookup table of functions used to resolve function calls in a dynamic/late binding manner.
 
+1.  class has virtual function(derived from a class that uses virtual functions)    &
+    static array    &
+    compiler sets up at compile time    &
+    point to the most-derived function accessible by that class
+2.  compiler adds a hidden pointer to the base class, *__vptr. *__vptr is set when a class instance is created so that it points to the virtual table for that class.
+    unlike the *this pointer, which is actually a function parameter. *__vptr is a real pointer.
+    it makes each class object allocated bigger by the size of one pointer,
+    *__vptr is also inherited by derived classes.
+
 a virtual table(a static array that the compiler sets up at compile time):
     entry1: for virtual function1 that can be called by objects of the class / a function pointer that points to the most-derived function
     entry2: for virtual function2 that can be called by objects of the class /
@@ -9,7 +18,8 @@ a virtual table(a static array that the compiler sets up at compile time):
     entryn: for virtual functionn that can be called by objects of the class /
 
 *__vptr : is set when a class instance is created so that it points to the virtual table for that class.
-    
+
+
 pure virtual function(or abstract function):
     acts as a placeholder that is meant to be redefined by derived class.
     
