@@ -1,0 +1,76 @@
+function returns a temporary variable:
+1. if no one gets it, it will be discarded
+2. if someone gets it, it will be discarded until the someone be destroyed.
+Example:
+class Auto_ptr1
+{
+	T* m_ptr;
+public:
+	Auto_ptr1(T* ptr = nullptr)
+		:m_ptr(ptr)
+	{
+	}
+	/*
+	Auto_ptr1(Auto_ptr1<T> &t,int a) {
+		m_ptr = t.m_ptr;
+		std::cout << "copy constructor" << std::endl;
+	}*/
+	~Auto_ptr1()
+	{
+		delete m_ptr;
+	}
+
+	T& operator*() const { return *m_ptr; }
+	T* operator->() const { return m_ptr; }
+};
+
+class Resource
+{
+public:
+	Resource() { std::cout << "Resource acquired\n"; }
+	~Resource() { std::cout << "Resource destroyed\n"; }
+};
+Auto_ptr1<Resource> generateResource()
+{
+	Resource *r = new Resource;
+	Auto_ptr1<Resource> res(r);
+	return res;
+}
+int main()
+{
+	{
+		generateResource();
+		std::cout << "abc" << std::endl;   
+	}
+  //output: 
+      Resource acquired
+      Resource destroyed
+      abc
+  {
+    Auto_ptr1<Resource> res = generateResource();
+    std::cout << "abc" << std::endl;  
+  }
+  //output: 
+      Resource acquired
+      abc
+      Resource destroyed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
