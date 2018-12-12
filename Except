@@ -1,0 +1,7 @@
+memory is not the only kind of resource that can leak.
+Files, locks, network connections, and threads are examples of system resources that a function may have to release or hand over to an object before throwing an exception.
+
+Exception-Safe Implementation Techniques:
+1. try-block
+2. resource acquisition is initialization RAII(the object destructor will be invoked whether that destruction is caused by normal exit from its scope or from an exception)
+
