@@ -1,0 +1,71 @@
+Executable based COFF:
+    PE in windows(.exe)
+    ELF in Linux
+    DLL(.dll and .so)
+    static linking library(.lib and .a)
+    
+    
+    
+ELF file type                   declare                 instance
+relocatable file                                       .o/.obj/.lib/.a
+executable file                                         .exe/bash
+shared object file                                      .so/.dll
+core dump file                                          core dump(linux)
+    
+    
+content:
+    ELF header
+        ----executable/dynamic or static/start address/hardware/system
+        ----section table offset
+    .text/.code section
+    .data section
+    .bss section
+    .rodata section(read only)
+    .comment
+    .note.GNU-stack(heap and stack prompt)
+    ...other sections
+    section header table(段表)
+    string tables
+    symbol tables
+    ...
+    
+    
+    
+    
+    
+code and data are in different area.
+    1. code is only read, data can be read and write
+    2. code cache and data cache, increase cache 
+    3. code can be sharable.
+
+    
+objdump -h test.o
+objdump -x test.o
+    -x: print more detailed information
+    -h: print all sections
+    get structure and content 
+size test.o
+    get length of text/data/bss
+objdump -s -d test.o
+    -s: print content of all sections with HEX
+    -d: disassemble all section contain code
+objcopy -I binary -O elf32-i386 -B i386 impge.jpg image.o(将二进制文件作为目标文件的一个段添加)
+objdump -ht image.o
+__attribute__((section("FOO"))) int global = 42;(指定变量所处的段)
+__attribute__((section(BAR))) void foo(){}(指定变量所处的段)
+readelf -h test.o(查看ELF文件头)    
+readelf -S test.o(段表信息)    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
