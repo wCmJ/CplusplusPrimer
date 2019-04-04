@@ -1,0 +1,33 @@
+            
+            
+            char a[2][5]                                char a[3]
+                10              sizeof(a)                   3
+            char [2][5]         typeid(a).name()        char [3]
+                5               sizeof(a+1)                 4
+            char (*)[5]         typeid(a+1).name()      char *
+                4               sizeof(&a+1)                4
+            char (*)[2][5]      typeid(&a+1).name()     char (*)[3]
+                4               sizeof(&a[0]+1)             4
+            char (*)[5]         typeid(&a[0]+1).name()  char *     
+                4               sizeof(&a)                  4
+            char (*)[2][5]      typeid(&a).name()       char (*)[3]   
+    a+1 is type of pointer, &a[1] is type of pointer
+    a[1] is type of array
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
