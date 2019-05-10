@@ -97,8 +97,8 @@ private:
     vptrZ   --------------------------------->  zdis
     vDerivedZ
     z
-    x
     a
+    x
 
 class X{
     int a = 1;
